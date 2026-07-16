@@ -44,10 +44,12 @@ class LocalStorageProvider implements StorageProvider {
 }
 
 class VercelBlobStorageProvider implements StorageProvider {
+  private token = process.env.BLOB_READ_WRITE_TOKEN ?? "";
+
   async upload(file: File, folder: string): Promise<string> {
     const ext = file.name.split(".").pop() ?? "jpg";
     const filename = `${folder}/${uuid()}.${ext}`;
-    const { url } = await put(filename, file, { access: "public" });
+    const { url } = await put(filename, file, { access: "public", token: this.token });
     return url;
   }
 
