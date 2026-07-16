@@ -36,6 +36,16 @@ yarn-error.log*
 # vercel
 .vercel
 
+# sqlite (migrated to Postgres)
+dev.db
+*.db
+
+# migration scripts (one-time use)
+scripts/
+
+# user-uploaded images (not committed)
+public/uploads/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
